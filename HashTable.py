@@ -64,20 +64,29 @@ class HashTable:
         return "".join(str(item) for item in self.hash_table)
 
     def getRelated(self, userInput):
-        # [('Dian Hong Gong Fu', ['Red Tea', 'China', 'Dian Hong Gong Fu', 0, 160])][('Jasmine Flower', ['Herbal', 'China', 'Jasmine Flower', 0, 140])]
-        tea_hash = HashTable(100)
+        # We need to create a new hash table, because we canno't use the one with the complete data.
+        tea_hash = HashTable(200)
         for tea in TeaData.tea_data:
-            val = self.get_val(tea[2])
+            val = self.get_val(tea[TeaData.name])
+            # val is a single tea ['White Tea', 'China', 'Bai Lan Ye Sheng', 0, 220]
             for data in val:
                 data = str(data)
                 if(userInput in data):
-                    tea_hash.set_val(data[2], val)
+                    tea_hash.set_val(data[TeaData.name], val)
+                    printTea(val)
                     break
         return tea_hash
 
-# def printTea():
-#     print()
-#     print()
+# Outputing the data for the user.
+def printTea(val):
+    print('\n')
+    print(val[TeaData.name])
+    print("Origin:", val[TeaData.country])
+    print("Ratings:", val[TeaData.rating])
+    print("Tea Type:", val[TeaData.type])
+    print("Price:", val[TeaData.price])
+    print("---------------------------------")
+    print('\n')
 
 
     

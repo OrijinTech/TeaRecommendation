@@ -17,7 +17,7 @@ def main():
     # print(hash_table.get_val("Zao"))
     print("May I help you?")
     user_inp = input("Search: ")
-    print(hash_table.getRelated(user_inp))
+    hash_table.getRelated(user_inp)
 
 
 # The Start of the program
