@@ -12,12 +12,18 @@ def dataToHashTable():
     return hash_table
 
 def main():
+    print("=========================================================", '\n', '\n')
     # hash table with all the data
     hash_table = dataToHashTable()
     # print(hash_table.get_val("Zao"))
-    print("May I help you?")
-    user_inp = input("Search: ")
-    hash_table.getRelated(user_inp)
+    user_inp = ' '
+    while(True):
+        user_inp = input("Search here: ")
+        if(user_inp != 'quit'):
+            print("=================================", '\n', '\n')
+            hash_table.getRelated(user_inp)
+        else:
+            break
 
 
 # The Start of the program

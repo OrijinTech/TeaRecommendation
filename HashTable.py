@@ -66,21 +66,26 @@ class HashTable:
     def getRelated(self, userInput):
         # We need to create a new hash table, because we canno't use the one with the complete data.
         tea_hash = HashTable(200)
+        # this holds the value for the emptiness of the hash table
+        isEmpty = True
         for tea in TeaData.tea_data:
             val = self.get_val(tea[TeaData.name])
             # val is a single tea ['White Tea', 'China', 'Bai Lan Ye Sheng', 0, 220]
             for data in val:
                 data = str(data)
-                if(userInput in data):
+                if(userInput.lower() in data.lower()):
+                    isEmpty = False
                     tea_hash.set_val(data[TeaData.name], val)
                     printTea(val)
-                    break
+                    break                
+        if(isEmpty):
+            print("We couldn't find any related products. QAQ")
         return tea_hash
 
 # Outputing the data for the user.
 def printTea(val):
     print("---------------------------------")
-    print(val[TeaData.name])
+    print('||', val[TeaData.name], '||')
     print("Origin:", val[TeaData.country])
     print("Ratings:", val[TeaData.rating])
     print("Tea Type:", val[TeaData.type])
