@@ -79,7 +79,7 @@ class HashTable:
 
 # Outputing the data for the user.
 def printTea(val):
-    print('\n')
+    print("---------------------------------")
     print(val[TeaData.name])
     print("Origin:", val[TeaData.country])
     print("Ratings:", val[TeaData.rating])
@@ -88,5 +88,3 @@ def printTea(val):
     print("---------------------------------")
     print('\n')
 
-
-    
