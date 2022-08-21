@@ -65,32 +65,32 @@ class HashTable:
         return "".join(str(item) for item in self.hash_table)
 
     # Return a hash table with all the related outputs
-    def getRelated(self, userInput):
+    def getRelated(self, user_input):
         # Corner case:
-        if (userInput == ""):
+        if (user_input == ""):
             print("Please start entering...")
             return
         # We need to create a new hash table, because we canno't use the one with the complete data.
-        tea_hash = HashTable(len(TeaData.tea_data))
+        tea_table = HashTable(len(TeaData.tea_data))
         # this holds the value for the emptiness of the hash table
-        isEmpty = True
+        empty_table = True
         # Time the following process
         # start_time = time.time()
         for tea in TeaData.tea_data:
-            val = self.get_val(tea[TeaData.name])
-            # val is a single tea ['White Tea', 'China', 'Bai Lan Ye Sheng', 0, 220]
-            for data in val:
-                data = str(data)
+            tea_info = self.get_val(tea[TeaData.name])
+            # tea_info is a single tea ['White Tea', 'China', 'Bai Lan Ye Sheng', 0, 220]
+            for data_piece in tea_info:
+                data_piece = str(data_piece)
                 # convert everything in lower case --> making case insensitive
-                if(userInput.lower() in data.lower()):
-                    isEmpty = False
-                    tea_hash.set_val(data[TeaData.name], val)
-                    printTea(val)
+                if(user_input.lower() in data_piece.lower()):
+                    empty_table = False
+                    tea_table.set_val(data_piece[TeaData.name], tea_info)
+                    printTea(tea_info)
                     break
         # print("Time used to retreive data:", time.time() - start_time)
-        if(isEmpty):
+        if(empty_table):
             print("We couldn't find any related products. QAQ")
-        return tea_hash
+        return tea_table
 
 # Outputing the data for the user.
 def printTea(val):
