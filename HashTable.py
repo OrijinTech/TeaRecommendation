@@ -1,4 +1,5 @@
 import TeaData
+import time
 # Why using hash table? --> Hash Table provides faster speed of retrieval over other data structures.
 # This is because Hash Table is index based data structure, we access elements by its index. 
 class HashTable:
@@ -63,21 +64,30 @@ class HashTable:
     def __str__(self) -> str:
         return "".join(str(item) for item in self.hash_table)
 
+    # Return a hash table with all the related outputs
     def getRelated(self, userInput):
+        # Corner case:
+        if (userInput == ""):
+            print("Please start entering...")
+            return
         # We need to create a new hash table, because we canno't use the one with the complete data.
-        tea_hash = HashTable(200)
+        tea_hash = HashTable(len(TeaData.tea_data))
         # this holds the value for the emptiness of the hash table
         isEmpty = True
+        # Time the following process
+        # start_time = time.time()
         for tea in TeaData.tea_data:
             val = self.get_val(tea[TeaData.name])
             # val is a single tea ['White Tea', 'China', 'Bai Lan Ye Sheng', 0, 220]
             for data in val:
                 data = str(data)
+                # convert everything in lower case --> making case insensitive
                 if(userInput.lower() in data.lower()):
                     isEmpty = False
                     tea_hash.set_val(data[TeaData.name], val)
                     printTea(val)
-                    break                
+                    break
+        # print("Time used to retreive data:", time.time() - start_time)
         if(isEmpty):
             print("We couldn't find any related products. QAQ")
         return tea_hash

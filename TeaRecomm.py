@@ -12,7 +12,7 @@ def dataToHashTable():
     return hash_table
 
 def main():
-    print("=========================================================", '\n', '\n')
+    print("=========================================================", '\n', 'WELCOME TO ORIJIN TEA', '\n', '\n')
     # hash table with all the data
     hash_table = dataToHashTable()
     # print(hash_table.get_val("Zao"))
@@ -25,6 +25,11 @@ def main():
         else:
             break
 
+
+# def test():
+#     hash_t = HashTable.HashTable(2)
+#     hash_t.set_val("hi", "value")
+#     print(hash_t)
 
 # The Start of the program
 main()
