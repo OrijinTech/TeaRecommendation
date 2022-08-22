@@ -20,7 +20,8 @@ def main():
     while(True):
         user_inp = input("Search here: ")
         if(user_inp != 'quit'):
-            print("=================================", '\n', '\n')
+            print("=================================",'\n', '\n', '\n', '\n')
+            print("The Results for:", user_inp.upper(), '\n', '\n', '\n', '\n')
             hash_table.getRelated(user_inp)
         else:
             break
